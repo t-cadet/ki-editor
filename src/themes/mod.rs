@@ -93,7 +93,11 @@ impl Theme {
 
 impl Default for Theme {
     fn default() -> Self {
-        vscode_light().clone()
+        themes()
+        .unwrap()
+        .into_iter()
+        .find(|theme| theme.name.as_str() == "Gruvbox Dark")
+        .unwrap()
     }
 }
 

@@ -2,7 +2,9 @@ use super::language::{Command, GrammarConfig, Language, LanguageId, LspCommand};
 
 pub const LANGUAGES: &[&Language] = &[
     &bash(),
+    &c(),
     &common_lisp(),
+    &cpp(),
     &css(),
     &csv(),
     &dockerfile(),
@@ -48,6 +50,23 @@ const fn bash() -> Language {
     }
 }
 
+const fn c() -> Language {
+    Language {
+        extensions: &["c", "h"],
+        file_names: &[],
+        lsp_language_id: None,
+        lsp_command: None,
+        tree_sitter_grammar_config: Some(GrammarConfig {
+            id: "c",
+            url: "https://github.com/tree-sitter/tree-sitter-c",
+            commit: "master",
+            subpath: None,
+        }),
+        formatter_command: None,
+        ..Language::new()
+    }
+}
+
 const fn common_lisp() -> Language {
     Language {
         file_names: &[],
@@ -62,6 +81,23 @@ const fn common_lisp() -> Language {
         }),
         highlight_query: None,
         formatter_command: None,
+    }
+}
+
+const fn cpp() -> Language {
+    Language {
+        extensions: &["cpp", "cxx", "hpp", "h"],
+        file_names: &[],
+        lsp_language_id: None,
+        lsp_command: None,
+        tree_sitter_grammar_config: Some(GrammarConfig {
+            id: "cpp",
+            url: "https://github.com/tree-sitter/tree-sitter-cpp",
+            commit: "master",
+            subpath: None,
+        }),
+        formatter_command: None,
+        ..Language::new()
     }
 }
 
