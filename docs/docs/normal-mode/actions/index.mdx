@@ -1,3 +1,5 @@
+import {TutorialFallback} from '@site/src/components/TutorialFallback'; 
+
 # Actions
 
 ## Notes for reading
@@ -63,16 +65,6 @@ Assuming the current selection mode is [Syntax Node](../selection-modes/syntax-n
 hello(y);
 ```
 
-## Delete Cut
-
-Keybindings:
-
-- `x`: Delete cut until next selection
-- `X`: Delete cut until previous selection
-
-This is a shortcut for `y d` or `y D`, it behaves like Delete, except that the
-deleted content will be copied into the clipboard.
-
 ## Change
 
 Keybindings:
@@ -111,7 +103,7 @@ For example:
 
 ## Raise
 
-Keybinding: `K`
+Keybinding: `T`
 
 This is one of my favorite actions, it only works for [syntax node](../selection-modes/syntax-node-based.md#syntax-node) selection modes.
 
@@ -128,6 +120,7 @@ fn main() {
     panic!();
   }
 }
+
 
 ```
 
@@ -146,13 +139,21 @@ Notes:
 - Raise should never cause syntax error (if it does that's a bug)
 - Raise preserve the node type of the current node
 
+## Join
+
+Keybinding: `J`
+
+Joins multiple lines within the current selection(s) into a single line.
+
+
+<TutorialFallback filename="join"/>
+
 ## Transform
 
 Keybinding: `!`
 
 Transformative actions are nested under here, such as (non-exhaustive):
 
-- `j`: Join (Joins current selection into a single line)
 - `w`: Wrap (Wrap current selection into multiple lines)
 - `l`: Convert to `lower case`
 - `s`: Convert to `snake_case`
